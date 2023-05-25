@@ -17,7 +17,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.firebase1.ui.RealtimeScreen
 import com.example.firebase1.ui.theme.Firebase1Theme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,7 +44,7 @@ class MainActivity : ComponentActivity() {
                             }
                         }
                     ) {
-                        RealtimeScreen()
+                        RealtimeScreen(isInsert)
                     }
                 }
             }

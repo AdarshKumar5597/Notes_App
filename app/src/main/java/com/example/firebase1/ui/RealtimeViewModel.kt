@@ -23,6 +23,17 @@ class RealtimeViewModel @Inject constructor(
 
     fun insert(items: RealtimeModelResponse.RealtimeItems) = repo.insert(items)
 
+    private val _updateRes: MutableState<RealtimeModelResponse> = mutableStateOf(
+        RealtimeModelResponse(
+            items = RealtimeModelResponse.RealtimeItems(),
+        )
+    )
+    val updateRes: State<RealtimeModelResponse> = _updateRes
+
+    fun setData(data: RealtimeModelResponse){
+        _updateRes.value = data
+    }
+
     init {
         viewModelScope.launch {
             repo.getItems().collect{
